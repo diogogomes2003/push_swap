@@ -1,4 +1,5 @@
-SRC = src/push_swap.c
+SRC = src/push_swap.c src/error_free.c src/stack_init.c src/stack_utils.c src/tiny_sort.c src/push_swap_command.C
+		src/
 
 NAME = push_swap
 
