@@ -1,4 +1,4 @@
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
 void    handle_five(t_node **a, t_node **b)
 {
@@ -35,7 +35,7 @@ void    tiny_sort(t_node **a)
     t_node *highest_node;
 
     highest_node = find_highest(*a);
-    if(*a == find_highest)
+    if(*a == highest_node)
         ra(a, false);
     else if ((*a)->next == highest_node)
         rra(a, false);
@@ -49,7 +49,7 @@ bool    stack_sorted(t_node *stack)
         return(1);
     while(stack->next)
     {
-        if(stack->value > stack->nexy->value)
+        if(stack->value > stack->next->value)
             return(false);
         stack = stack->next;
     }

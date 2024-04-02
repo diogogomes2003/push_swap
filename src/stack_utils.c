@@ -1,11 +1,11 @@
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
-int stack_len(t_node **stack)
+int stack_len(t_node *stack)
 {
     int count;
 
     if(!stack)
-        return(NULL);
+        return(0);
     count = 0;
     while(stack)
     {
@@ -38,7 +38,7 @@ t_node  *find_smallest(t_node *stack)
     smallest = LONG_MAX;
     while(stack)
     {
-        if(stack-->value < smallest)
+        if(stack->value < smallest)
         {
             smallest = stack->value;
             smallest_node = stack;
@@ -51,7 +51,7 @@ t_node  *find_smallest(t_node *stack)
 t_node *find_last_node(t_node *head)
 {
     if(!head)
-        return(NULL)
+        return(NULL);
     while(head->next)
         head = head->next;
     return(head);
@@ -63,7 +63,7 @@ void    append_node(t_node **stack, int nbr)
     t_node  *last_node;
 
     if(!stack)
-        return(NULL)
+        return ;
     node = malloc(sizeof(t_node));
     if(!node)
         return ;
@@ -77,7 +77,7 @@ void    append_node(t_node **stack, int nbr)
     }    
     else
     {
-        last_node = find_last_node(*stack)
+        last_node = find_last_node(*stack);
         last_node->next = node;
         node->prev = last_node;
     }

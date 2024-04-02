@@ -1,5 +1,4 @@
-SRC = src/push_swap.c src/error_free.c src/stack_init.c src/stack_utils.c src/tiny_sort.c src/push_swap_command.C
-		src/
+SRC = src/push_swap.c src/error_free.c src/stack_init.c src/stack_utils.c src/tiny_sort.c src/push_swap_command.c src/push_command.c src/reverse_rotate_command.c src/rotate_command.c src/swap_command.c src/push_swap_init.c
 
 NAME = push_swap
 
@@ -11,7 +10,7 @@ FLAGS = -Wall -Wextra -Werror -g
 
 MAKE = make -C
 
-LIBFT_PATH = lib/libft
+LIBFT_PATH = libft
 
 LIBFT = -L ${LIBFT_PATH} -lft
 

@@ -1,6 +1,6 @@
-#include "include/push_swap.h"
+#include "../include/push_swap.h"
 
-long    ft_atoi(const char *str)
+long    ft_latoi(const char *str)
 {
     long    res;
     int     sign;
@@ -32,10 +32,10 @@ void stack_init(t_node **a, char **av, bool flag_ac_2)
     {
         if(error_syntax(av[i]))
             error_free(a, av, flag_ac_2);
-        nbr = ft_atoi(av[i]);
+        nbr = ft_latoi(av[i]);
         if(nbr > INT_MAX || nbr < INT_MIN)
             error_free(a, av, flag_ac_2);
-        if (error_repetittion(*a,(int)nbr))
+        if (error_repetition(*a,(int)nbr))
             error_free(a, av, flag_ac_2);
         append_node(a,(int)nbr);
         ++i;   
