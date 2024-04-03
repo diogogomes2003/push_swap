@@ -18,7 +18,7 @@ typedef struct s_node
 	struct s_node	*prev;
 }	t_node;
 
-void	stack_init(t_node **a, char **argv, bool flag_argc_2);
+void	stack_init(t_node **a, char **av, bool flag_ac_2);
 bool	stack_sorted(t_node *stack);
 int		stack_len(t_node *stack);
 void	sa(t_node **a, bool checker);
@@ -42,10 +42,10 @@ void	rb(t_node **b, bool checker);
 void	rr(t_node **a, t_node **b, bool checker);
 t_node	*return_cheapest(t_node *stack);
 int		error_syntax(char *str_nbr);
-void	error_free(t_node **a, char **argv, bool flag_argc_2);
+void	error_free(t_node **a, char **av, bool flag_ac_2);
 int		error_repetition(t_node *a, int nbr);
 void	append_node(t_node **stack, int nbr);
-void	free_matrix(char **argv);
+void	free_matrix(char **av);
 void	free_stack(t_node **stack);
 void	finish_rotation(t_node **stack, t_node *top_node, char stack_name);
 

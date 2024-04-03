@@ -1,84 +1,84 @@
 #include "../include/push_swap.h"
 
-int stack_len(t_node *stack)
+t_node	*return_cheapest(t_node *stack)
 {
-    int count;
-
-    if(!stack)
-        return(0);
-    count = 0;
-    while(stack)
-    {
-        ++count;
-        stack = stack->next;
-    }
-    return(count);
+	if (!stack)
+		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
+	}
+	return (NULL);
 }
 
-t_node  *return_cheapest(t_node *stack)
+t_node	*find_smallest(t_node *stack)
 {
-    if(!stack)
-        return(NULL);
-    while(stack)
-    {
-            if(stack->cheapest)
-                return(stack);
-            stack = stack->next;
-    }
-    return(NULL);
+	long	smallest;
+	t_node	*smallest_node;
+
+	if (!stack)
+		return (NULL);
+	smallest = LONG_MAX;
+	while (stack)
+	{
+		if (stack->value < smallest)
+		{
+			smallest = stack->value;
+			smallest_node = stack;
+		}
+		stack = stack->next;
+	}
+	return (smallest_node);
 }
 
-t_node  *find_smallest(t_node *stack)
+t_node	*find_last_node(t_node *head)
 {
-    long    smallest;
-    t_node  *smallest_node;
-
-    if(!stack)
-        return(NULL);
-    smallest = LONG_MAX;
-    while(stack)
-    {
-        if(stack->value < smallest)
-        {
-            smallest = stack->value;
-            smallest_node = stack;
-        }
-        stack = stack->next;
-    }
-    return(smallest_node);
+	if (!head)
+		return (NULL);
+	while (head->next)
+		head = head->next;
+	return (head);
 }
 
-t_node *find_last_node(t_node *head)
+void	append_node(t_node **stack, int nbr)
 {
-    if(!head)
-        return(NULL);
-    while(head->next)
-        head = head->next;
-    return(head);
+	t_node	*node;
+	t_node	*last_node;
+
+	if (!stack)
+		return ;
+	node = malloc(sizeof(t_node));
+	if (!node)
+		return ;
+	node->next = NULL;
+	node->cheapest = false;
+	node->value = nbr;
+	if (!*stack)
+	{
+		*stack = node;
+		node->prev = NULL;
+	}
+	else
+	{
+		last_node = find_last_node(*stack);
+		last_node->next = node;
+		node->prev = last_node;
+	}
 }
 
-void    append_node(t_node **stack, int nbr)
+int	stack_len(t_node *stack)
 {
-    t_node  *node;
-    t_node  *last_node;
+	int	count;
 
-    if(!stack)
-        return ;
-    node = malloc(sizeof(t_node));
-    if(!node)
-        return ;
-    node->next = NULL;
-    node->cheapest = false;
-    node->value = nbr;
-    if(!*stack)
-    {
-        *stack = node;
-        node->prev = NULL;
-    }    
-    else
-    {
-        last_node = find_last_node(*stack);
-        last_node->next = node;
-        node->prev = last_node;
-    }
+	if (!stack)
+		return (0);
+	count = 0;
+	while (stack)
+	{
+		++count;
+		stack = stack->next;
+	}
+	return (count);
 }
