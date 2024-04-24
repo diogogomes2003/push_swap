@@ -1,39 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_command.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dduarte- <dduarte-@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/24 14:00:40 by dduarte-          #+#    #+#             */
+/*   Updated: 2024/04/24 14:04:12 by dduarte-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
-void    push(t_node **dest, t_node **src)
+void	push(t_node **dest, t_node **src)
 {
-    t_node  *node_to_push;
+	t_node	*node_to_push;
 
-    if(!*src)
-        return ;
-    node_to_push = *src;
-    *src = (*src)->next;
-    if(*src)
-        (*src)->prev = NULL;
-    node_to_push->prev = NULL;
-    if(!*dest)
-    {
-        *dest = node_to_push;
-        node_to_push->next = NULL;
-    }
-    else
-    {
-        node_to_push->next = *dest;
-        node_to_push->next->prev = node_to_push;
-        *dest = node_to_push;
-    }
+	if (!*src)
+		return ;
+	node_to_push = *src;
+	*src = (*src)->next;
+	if (*src)
+		(*src)->prev = NULL;
+	node_to_push->prev = NULL;
+	if (!*dest)
+	{
+		*dest = node_to_push;
+		node_to_push->next = NULL;
+	}
+	else
+	{
+		node_to_push->next = *dest;
+		node_to_push->next->prev = node_to_push;
+		*dest = node_to_push;
+	}
 }
 
-void    pa(t_node **a, t_node **b, bool checker)
+void	pa(t_node **a, t_node **b, bool checker)
 {
-    push(a, b);
-    if(!checker)
-        write(1,"pa\n",3);
+	push(a, b);
+	if (!checker)
+		write(1, "pa\n", 3);
 }
 
-void    pb(t_node **b, t_node **a, bool checker)
+void	pb(t_node **b, t_node **a, bool checker)
 {
-    push(b, a);
-    if(!checker)
-        write(1,"pb\n",3);
+	push(b, a);
+	if (!checker)
+		write(1, "pb\n", 3);
 }
